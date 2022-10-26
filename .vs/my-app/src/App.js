@@ -4,7 +4,7 @@ import { Initial } from './Components/Initial';
 function App() {
   return (
     <div className="App">
-      <Initial />
+     <p>Hola</p>
     </div>
   );
 }
