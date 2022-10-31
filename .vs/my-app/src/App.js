@@ -9,16 +9,16 @@ import "./custom.css";
 function App() {
 
   const getCollections = useCallback(async () => {
-		const collectionsFromRepository = await Repository.getIACollections();
+		const collectionsFromRepository = await Repository.getCollections("IAcollections");
     console.table(collectionsFromRepository);
 	}, []);
 
   const saveCollections = async () => {
     const itemIA = {
-      data: "DATOS DE EJEMPLO DOS"
+      data: "DATOS DE EJEMPLO CUATRO"
     };
 
-    Repository.setIACollections(itemIA);
+    Repository.setCollections("IAcollections", itemIA);
     //Repository.updateIACollections(itemIA.idDoc, updatedIA);
 	};
 
