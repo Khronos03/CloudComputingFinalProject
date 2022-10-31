@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import { useEffect, useState, useCallback, useMemo } from 'react';
 import { Repository } from './Projects/Repository';
+import "./custom.css";
 
 
 function App() {
@@ -41,7 +42,9 @@ function App() {
           NO entre aquí
         </a>
 
-        <button onClick={() => saveCollections()}>
+        <button 
+							className="p-3 font-bold text-center text-white duration-75 ease-linear bg-blue-800 border-blue-800 rounded-md shadow-xl border-1 hover:bg-blue-900"
+        onClick={() => saveCollections()}>
 							Save Items IA
 				</button>
 
