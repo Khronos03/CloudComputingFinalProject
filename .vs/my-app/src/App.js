@@ -4,7 +4,7 @@ import './App.css';
 import { useEffect, useState, useCallback, useMemo } from 'react';
 import { Repository } from './Projects/Repository';
 import "./custom.css";
-
+import Authentication from './Projects/Components/Authentication';
 
 function App() {
 
@@ -33,21 +33,7 @@ function App() {
         <p>
           IA Cloud Computing, Tapas  🐸
         </p>
-        <a
-          className="App-link"
-          href="https://www.instagram.com/art.assets/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          NO entre aquí
-        </a>
-
-        <button 
-							className="p-3 font-bold text-center text-white duration-75 ease-linear bg-blue-800 border-blue-800 rounded-md shadow-xl border-1 hover:bg-blue-900"
-        onClick={() => saveCollections()}>
-							Save Items IA
-				</button>
-
+        <Authentication />
       </header>
     </div>
   );
