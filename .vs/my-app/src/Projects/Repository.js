@@ -2,8 +2,8 @@ import { firestoreDb } from '../Shared/firebase-config';
 
 export const Repository = {
 
-  getIACollections: async () => {
-    const itemsCollections = await firestoreDb.collection('IAcollections').get();
+  getCollections: async (name) => {
+    const itemsCollections = await firestoreDb.collection(name).get();
     const projectsList = itemsCollections.docs.map(project => {
       return {
         ...project.data(),
@@ -14,18 +14,18 @@ export const Repository = {
     return projectsList;
   },
 
-  setIACollections: (item) => {
-    firestoreDb.collection('IAcollections')
+  setCollections: (name, item) => {
+    firestoreDb.collection(name)
       .doc()
       .set(item);
   },
 
-  updateIACollections: (idDoc, project) => {
-    firestoreDb.collection('IAcollections').doc(idDoc).set(project);
+  updateCollections: (name, idDoc, project) => {
+    firestoreDb.collection(name).doc(idDoc).set(project);
   },
 
-  getIACollection: async (nameItem) => {
-    const getItemFirebase = await firestoreDb.collection('IAcollections').where("name", "==", nameItem).get();
+  getCollection: async (name, nameItem) => {
+    const getItemFirebase = await firestoreDb.collection(name).where("name", "==", nameItem).get();
     return getItemFirebase;
   },
 

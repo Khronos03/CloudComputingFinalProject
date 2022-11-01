@@ -3,22 +3,21 @@ import logo from './logo.svg';
 import './App.css';
 import { useEffect, useState, useCallback, useMemo } from 'react';
 import { Repository } from './Projects/Repository';
-import Entrys from './Components/Entrys';
 
 
 function App() {
 
   const getCollections = useCallback(async () => {
-    const collectionsFromRepository = await Repository.getIACollections();
+		const collectionsFromRepository = await Repository.getIACollections();
     console.table(collectionsFromRepository);
   }, []);
 
   const saveCollections = async () => {
     const itemIA = {
-      data: "DATOS DE EJEMPLO TRES"
+      data: "DATOS DE EJEMPLO DOS"
     };
 
-    Repository.setIACollections(itemIA);
+    Repository.setCollections("IAcollections", itemIA);
     //Repository.updateIACollections(itemIA.idDoc, updatedIA);
   };
 
@@ -43,10 +42,9 @@ function App() {
         </a>
 
         <button onClick={() => saveCollections()}>
-              Save Items IA
-        </button>
+							Save Items IA
+				</button>
 
-        <Entrys/> 
       </header>
     </div>
   );
