@@ -46,7 +46,7 @@ function App() {
               Save Items IA
         </button>
 
-        <Entrys/>
+        <Entrys/> 
       </header>
     </div>
   );
