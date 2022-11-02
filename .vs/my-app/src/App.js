@@ -3,12 +3,13 @@ import logo from './logo.svg';
 import './App.css';
 import { useEffect, useState, useCallback, useMemo } from 'react';
 import { Repository } from './Projects/Repository';
-
+import Authentication from './Projects/Components/Authentication';
+import Entrys from './Components/Entrys';
 
 function App() {
 
   const getCollections = useCallback(async () => {
-		const collectionsFromRepository = await Repository.getIACollections();
+		const collectionsFromRepository = await Repository.getCollections("IAcollections");
     console.table(collectionsFromRepository);
   }, []);
 
@@ -32,18 +33,8 @@ function App() {
         <p>
           IA Cloud Computing, Tapas  🐸
         </p>
-        <a
-          className="App-link"
-          href="https://www.instagram.com/art.assets/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          NO entre aquí
-        </a>
-
-        <button onClick={() => saveCollections()}>
-							Save Items IA
-				</button>
+        
+      <Authentication/>
 
       </header>
     </div>
