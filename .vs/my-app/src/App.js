@@ -34,7 +34,7 @@ function App() {
           IA Cloud Computing, Tapas  🐸
         </p>
         
-      <Authentication/>
+      <Entrys/>
 
       </header>
     </div>

@@ -1,5 +1,5 @@
 import React from "react";
-import { Exists } from "./Exists";
+
 function Entrys(){
   
   const handleDataSubmit = (event) => {
@@ -13,16 +13,15 @@ function Entrys(){
     console.log(numbersE);
     var error=1;
     parseFloat(error);
-
-    while (error > 0.005) {
-      var ar_Entr;
+    var ciclos=1000;
+    while (ciclos>0) {
+      var ar_Entr = new Array(numbersE.length);
       for (var i = 0; i < numbersE.length; i++) {
         var valor=0;
         valor= w*numbersE[i]+s;
-        ar_Entr.add(valor);
-//        ar_Entr.push(valor);
+        ar_Entr[i]=valor;
       }
-
+      console.log("HOLA"+ar_Entr);
       var sum=0;
       for (var i = 0; i < numbersE.length; i++) {
        sum=sum+((ar_Entr[i]-numbersS[i])*(ar_Entr[i]-numbersS[i])); 
@@ -41,9 +40,15 @@ function Entrys(){
 
       w=w-(alfa*wP);
       s=s-(alfa*sP);
-
+      ciclos--;
     }
-    Exists.methodTest(w, s);
+
+    const numberAlert = prompt('Digita un numero');
+
+    var sal=numberAlert*w+s;
+
+    alert("RESULTADO ES : " +sal);
+
   };
 
     return (
