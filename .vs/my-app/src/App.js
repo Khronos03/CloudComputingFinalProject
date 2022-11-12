@@ -3,19 +3,19 @@ import logo from './logo.svg';
 import './App.css';
 import { useEffect, useState, useCallback, useMemo } from 'react';
 import { Repository } from './Projects/Repository';
+import "./custom.css";
 import Authentication from './Projects/Components/Authentication';
-import Entrys from './Components/Entrys';
 
 function App() {
 
   const getCollections = useCallback(async () => {
-		const collectionsFromRepository = await Repository.getCollections("IAcollections");
+    const collectionsFromRepository = await Repository.getCollections("IAcollections");
     console.table(collectionsFromRepository);
   }, []);
 
   const saveCollections = async () => {
     const itemIA = {
-      data: "DATOS DE EJEMPLO DOS"
+      data: "DATOS DE EJEMPLO CUATRO"
     };
 
     Repository.setCollections("IAcollections", itemIA);
@@ -30,12 +30,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          IA Cloud Computing, Tapas  🐸
-        </p>
-        
-      <Entrys/>
-
+        <Authentication />
       </header>
     </div>
   );
