@@ -1,7 +1,32 @@
 import React from "react";
+import { useEffect, useState, useCallback } from 'react';
+import { Repository } from "../Projects/Repository";
 
 function Entrys(){
   
+  const [data1, setData1] = useState([]);
+  const [data2, setData2] = useState([]);
+
+  const getCollections = useCallback(async () => {
+    const collectionsFromRepository = await Repository.getCollections("IAcollections");
+    console.table(collectionsFromRepository);
+  }, []);
+
+  const saveCollections = async (data1, data2) => {
+    const itemIA = {
+      entradas: data1,
+      salidas: data2,
+    };
+
+    Repository.setCollections("IAcollections", itemIA);
+  };
+
+  useEffect(() => {
+    if(data1){
+    getCollections();
+    }
+  }, [data1]);
+
   const handleDataSubmit = (event) => {
     event.preventDefault();
 
@@ -10,10 +35,16 @@ function Entrys(){
     const alfa=0.01;
     const numbersE = event.target[0].value.split(',');
     const numbersS = event.target[1].value.split(',');
-    console.log(numbersE);
+
+    setData1(numbersE);
+    setData2(numbersS);
+
+    saveCollections(data1, data2);
+
     var error=1;
     parseFloat(error);
     var ciclos=1000;
+
     while (ciclos>0) {
       var ar_Entr = new Array(numbersE.length);
       for (var i = 0; i < numbersE.length; i++) {
@@ -21,7 +52,6 @@ function Entrys(){
         valor= w*numbersE[i]+s;
         ar_Entr[i]=valor;
       }
-      console.log("HOLA"+ar_Entr);
       var sum=0;
       for (var i = 0; i < numbersE.length; i++) {
        sum=sum+((ar_Entr[i]-numbersS[i])*(ar_Entr[i]-numbersS[i])); 
@@ -52,6 +82,7 @@ function Entrys(){
   };
 
     return (
+      <>
         <form
         onSubmit={handleDataSubmit}
         className="flex cols-3"
@@ -76,6 +107,7 @@ function Entrys(){
           Iniciar Entrenamiento
         </button>
       </form>
+      </>
     );
 }
 export default Entrys;
